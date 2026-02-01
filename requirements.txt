@@ -1,0 +1,8 @@
+Flask
+Flask-Cors
+googletrans==4.0.0-rc1
+mysql-connector-python
+pymysql
+deep-translator
+gunicorn==21.2.0
+python-dotenv

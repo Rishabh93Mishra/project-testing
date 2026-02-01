@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Courses - VIDYA MARG</title>
+    <link rel="stylesheet" href="/static/project.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">📘 Courses</div>
+    <button onclick="goBack()">Back</button>
+</header>
+
+<h2 style="text-align:center;">Available Courses</h2>
+
+<div class="college-list" id="courseContainer" style="padding:20px;">
+    <p>Loading...</p>
+</div>
+
+<script>
+// Load courses from backend
+const BASE_URL = "https://career-bot-kjni.onrender.com";
+
+fetch(`${BASE_URL}/courses`)
+    .then(res => res.json())
+    .then(data => {
+        let box = document.getElementById("courseContainer");
+        box.innerHTML = "";
+
+        data.forEach(c => {
+            box.innerHTML += `
+            <div class="college-card">
+                <h3>${c.course_name}</h3>
+                <p><b>Eligibility:</b> ${c.eligibility}</p>
+                <p><b>Duration:</b> ${c.duration}</p>
+                <p><b>Cost:</b> ${c.cost}</p>
+            </div>`;
+        });
+    });
+
+function goBack() { window.location.href = "dashboard.html"; }
+</script>
+
+</body>
+</html>
