@@ -44,7 +44,6 @@ def login():
     email = data.get("email")
     password = data.get("password")
 
-    # TEMP LOGIN (Replace with DB later)
     if email == "admin@gmail.com" and password == "1234":
         return jsonify({"status": "success"})
     else:
@@ -53,9 +52,3 @@ def login():
 @app.route("/signup", methods=["POST"])
 def signup():
     return jsonify({"status": "success"})
-
-# ---------------- RUN ----------------
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
