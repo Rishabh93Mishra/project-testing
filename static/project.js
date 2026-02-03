@@ -1,31 +1,16 @@
-async function login() {
-  const email = document.getElementById("username").value;
+function login() {
+  const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const msg = document.getElementById("message");
 
-  try {
-    const response = await fetch("/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
-    });
-
-    const data = await response.json();
-
-    if (data.status === "success") {
-      msg.style.color = "green";
-      msg.innerHTML = "Login successful! Redirecting...";
-
-      setTimeout(() => {
-        window.location.href = "/dashboard";
-      }, 1000);
-
-    } else {
-      msg.style.color = "red";
-      msg.innerHTML = "Invalid email or password!";
-    }
-  } catch (err) {
+  if (email === "test@gmail.com" && password === "1234") {
+    msg.style.color = "green";
+    msg.innerText = "Login successful!";
+    setTimeout(() => {
+      window.location.href = "dashboard.html";
+    }, 800);
+  } else {
     msg.style.color = "red";
-    msg.innerHTML = "Server error. Try again.";
+    msg.innerText = "Invalid credentials!";
   }
 }
